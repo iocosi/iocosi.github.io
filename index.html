@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>io, così. — un rullino, una persona, la sua pelle</title>
+<meta name="description" content="Un progetto fotografico su pellicola sulla nudità e sul sentirsi bene nella propria pelle. Cerco persone, chiunque.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bianco: #FFFFFF;
+    --fondo: #F7F7F7;
+    --nero: #18181B;
+    --grigio: #6B6B73;
+    --grigio-chiaro: #8E8E96;
+    --linea: #E7E7EA;
+    --font: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(76px + env(safe-area-inset-top, 0px)); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bianco);
+    color: var(--nero);
+    font-family: var(--font);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--nero); outline-offset: 3px; border-radius: 4px; }
+
+  .contenitore { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* Menù */
+  .barra {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(255,255,255,0.9);
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .barra .contenitore { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .logo::before { content: ""; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--nero); }
+  .menu { display: flex; align-items: center; gap: 2rem; }
+  .menu a { text-decoration: none; color: var(--grigio); font-size: 0.95rem; }
+  .menu a:hover { color: var(--nero); }
+  .pillola {
+    display: inline-block; text-decoration: none;
+    background: var(--nero); color: var(--bianco) !important;
+    padding: 0.45rem 1rem; border-radius: 999px; font-size: 0.875rem; font-weight: 500;
+  }
+  .apri-menu { display: none; background: none; border: 0; padding: 0.5rem; cursor: pointer; color: var(--nero); }
+  .apri-menu svg { display: block; }
+
+  @media (max-width: 820px) {
+    .apri-menu { display: block; }
+    .menu {
+      display: none;
+      position: absolute; top: 100%; left: 0; right: 0;
+      flex-direction: column; align-items: flex-start; gap: 0;
+      background: var(--bianco); border-bottom: 1px solid var(--linea);
+      padding: 0.5rem 1.5rem 1.25rem;
+    }
+    .menu.aperto { display: flex; }
+    .menu a { padding: 0.7rem 0; font-size: 1.05rem; width: 100%; }
+    .menu .pillola { width: auto; margin-top: 0.6rem; padding: 0.6rem 1.2rem; }
+  }
+
+  /* Apertura */
+  .apertura { text-align: center; padding: 7rem 0 6rem; }
+  .etichetta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--fondo); border-radius: 999px;
+    padding: 0.3rem 0.85rem; font-size: 0.85rem; color: var(--nero);
+    margin-bottom: 2rem;
+  }
+  .etichetta::before { content: ""; width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--nero); }
+  .apertura h1 {
+    font-size: clamp(2.1rem, 9vw, 5.5rem);
+    font-weight: 700; line-height: 1.02; letter-spacing: -0.045em;
+    margin: 0 0 2rem;
+  }
+  .apertura h1 span { display: block; white-space: nowrap; }
+  .apertura h1 .tenue { color: var(--grigio-chiaro); }
+  .sotto { color: var(--grigio); font-size: clamp(1.05rem, 2.4vw, 1.3rem); line-height: 1.5; margin: 0 auto 2.75rem; }
+  .sotto span { white-space: nowrap; }
+  .azioni { display: flex; gap: 1rem 2.5rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+  .bottone {
+    display: inline-block; text-decoration: none;
+    background: var(--nero); color: var(--bianco);
+    padding: 1rem 2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 500;
+  }
+  .bottone:hover { background: #000; }
+  .link { text-decoration: none; font-size: 1.1rem; font-weight: 500; }
+  .link:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  /* Sezioni */
+  section { padding: 6rem 0; }
+  .grigia { background: var(--fondo); }
+  h2 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 700; line-height: 1.08; letter-spacing: -0.035em;
+    margin: 0 0 1.5rem;
+  }
+  h2 .tenue { color: var(--grigio-chiaro); }
+  h2.righe span { display: block; }
+  .intro { color: var(--grigio); font-size: 1.15rem; max-width: 36rem; margin: 0 0 3rem; }
+
+  /* Come funziona */
+  .passi { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+  .passi li { background: var(--bianco); border: 1px solid var(--linea); border-radius: 1.5rem; padding: 2rem; }
+  .passi .numero {
+    display: grid; place-items: center; width: 3rem; height: 3rem; border-radius: 0.85rem;
+    background: var(--fondo); font-weight: 600; margin-bottom: 1.5rem;
+  }
+  .passi h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 0.75rem; }
+  .passi p { color: var(--grigio); margin: 0; font-size: 1rem; }
+  @media (max-width: 1000px) { .passi { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .passi { grid-template-columns: 1fr; } }
+
+  /* Il progetto */
+  .due-colonne { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  @media (max-width: 900px) { .due-colonne { grid-template-columns: 1fr; gap: 3rem; } }
+  .testo p { color: var(--grigio); font-size: 1.15rem; margin: 0 0 1.25rem; max-width: 36rem; }
+  .punti { list-style: none; padding: 0; margin: 2rem 0 0; }
+  .punti li { position: relative; padding-left: 1.2rem; margin-bottom: 0.8rem; font-size: 1rem; }
+  .punti li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--nero); }
+
+  .condizioni { background: var(--fondo); border-radius: 2rem; padding: clamp(2rem, 4vw, 3rem); }
+  .condizioni h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 1.5rem; }
+  .condizioni .punti { margin: 0; }
+  .condizioni .punti li { font-size: 1.05rem; padding: 1rem 0 1rem 1.4rem; margin: 0; border-top: 1px solid var(--linea); }
+  .condizioni .punti li:first-child { border-top: 0; padding-top: 0; }
+  .condizioni .punti li::before { top: calc(1rem + 0.6em); }
+  .condizioni .punti li:first-child::before { top: 0.6em; }
+
+  /* Mostra */
+  .pannello {
+    background: var(--nero); color: var(--bianco);
+    border-radius: 2.5rem; padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; text-align: center;
+  }
+  .pannello h2 { color: var(--bianco); }
+  .pannello p { color: #B4B4BC; font-size: clamp(1.05rem, 2.2vw, 1.25rem); max-width: 38rem; margin: 0 auto 1rem; }
+
+  /* Domande */
+  .stretto { max-width: 48rem; }
+  details { border-bottom: 1px solid var(--linea); }
+  details:first-of-type { border-top: 1px solid var(--linea); }
+  summary {
+    cursor: pointer; list-style: none; position: relative;
+    padding: 1.25rem 2.5rem 1.25rem 0; font-weight: 600; font-size: 1.1rem;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after {
+    content: "+"; position: absolute; right: 0.25rem; top: 1.05rem;
+    font-size: 1.5rem; font-weight: 400; transition: transform 0.2s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  @media (prefers-reduced-motion: reduce) { summary::after { transition: none; } }
+  details p { color: var(--grigio); margin: 0 0 1.25rem; max-width: 40rem; }
+
+  /* Chi sono */
+  .chisono p { color: var(--grigio); font-size: 1.15rem; margin: 0 0 1.25rem; }
+  .chisono p:last-child { color: var(--nero); font-weight: 500; }
+
+  /* Scrivimi */
+  .finale { text-align: center; }
+  .finale p { color: var(--grigio); font-size: 1.15rem; max-width: 34rem; margin: 0 auto 2.5rem; }
+  .nota { font-size: 0.9rem !important; margin-top: 1.5rem !important; }
+
+  footer { border-top: 1px solid var(--linea); padding: 2.5rem 0 3rem; color: var(--grigio); font-size: 0.9rem; }
+  footer .contenitore { display: flex; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; }
+  footer p { margin: 0; }
+</style>
+</head>
+<body>
+
+<header class="barra">
+  <div class="contenitore">
+    <a class="logo" href="#inizio">io, così.</a>
+    <button class="apri-menu" type="button" aria-expanded="false" aria-controls="menu" aria-label="Apri il menù">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+    <nav class="menu" id="menu" aria-label="Menù principale">
+      <a href="#come">Come funziona</a>
+      <a href="#progetto">Il progetto</a>
+      <a href="#mostra">La mostra</a>
+      <a href="#domande">Domande</a>
+      <a href="#chisono">Chi sono</a>
+      <a class="pillola" href="#scrivimi">Scrivimi</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inizio">
+  <div class="contenitore apertura">
+    <p class="etichetta">un rullino, una persona, la sua pelle</p>
+    <h1>
+      <span>Cosa fai</span>
+      <span>quando non devi</span>
+      <span class="tenue">essere niente</span>
+      <span>per nessuno?</span>
+    </h1>
+    <p class="sotto"><span>Magari ti fai un caffè,</span> <span>metti la tua musica,</span> <span>apri un libro.</span><br><span>E stai bene così.</span> <span>Raccontamelo con un rullino.</span></p>
+    <div class="azioni">
+      <a class="bottone" href="#scrivimi">Scrivimi</a>
+      <a class="link" href="#come">Scopri come funziona</a>
+    </div>
+  </div>
+
+  <section class="grigia" id="come">
+    <div class="contenitore">
+      <h2>Come funziona</h2>
+      <p class="intro">Cerco persone. Chiunque: uomini, donne, giovani, anziani, qualsiasi genere, qualsiasi corpo.</p>
+      <ol class="passi">
+        <li>
+          <span class="numero">1</span>
+          <h3>Un caffè per conoscerci</h3>
+          <p>In un posto pubblico che scegli tu, un bar o un locale dove ti senti a tuo agio. Senza macchina fotografica. Mi presento, ti racconto il progetto e rispondo alle tue domande. Poi decidi con calma se ti va.</p>
+        </li>
+        <li>
+          <span class="numero">2</span>
+          <h3>La tua ora</h3>
+          <p>Nel posto che scegli tu: casa tua o un luogo che senti tuo. Mi fai ascoltare la musica che ami, ti prepari una moka o un drink, ti occupi delle piante, stai con i tuoi animali. Nel frattempo ti osservo e, se ti va, ti faccio qualche domanda.</p>
+        </li>
+        <li>
+          <span class="numero">3</span>
+          <h3>Il rullino</h3>
+          <p>Porto una vecchia macchina fotografica e un rullino dedicato a te: 36 pose. Non è detto che tutte riescano, è il bello della pellicola. Vedrai tutti i negativi e sceglierai tu quali foto possono essere mostrate.</p>
+        </li>
+        <li>
+          <span class="numero">4</span>
+          <h3>La mostra</h3>
+          <p>Il progetto si conclude con una mostra in cui si entra solo senza telefono, per sensibilizzare sul tema e spingere altre persone a unirsi.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="progetto">
+    <div class="contenitore due-colonne">
+      <div class="testo">
+        <h2 class="righe"><span>La pelle è la prima</span> <span>cosa che mostriamo</span> <span class="tenue">e l'ultima</span> <span class="tenue">che accettiamo.</span></h2>
+        <p>Porta scritta la nostra storia: dove siamo caduti, cosa abbiamo attraversato, quanto tempo è passato. Eppure passiamo la vita a coprirla e a correggerla.</p>
+        <p>È un progetto sulla nudità, e la nudità c'è: nelle foto il corpo è nudo, così com'è. Solo pellicola, niente digitale, nessun ritocco, nessuna posa. Non per mettersi in mostra, ma per dire "non me ne vergogno", alle tue condizioni.</p>
+      </div>
+      <div class="condizioni">
+        <h3>Alle tue condizioni</h3>
+        <ul class="punti">
+          <li>Puoi coprire o mascherare il volto e i segni che ti rendono riconoscibile.</li>
+          <li>Nessuna immagine esce senza il tuo sì.</li>
+          <li>Puoi avere accanto una persona di fiducia.</li>
+          <li>Puoi fermarti in qualsiasi momento, senza spiegazioni.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="mostra" style="padding-top:0">
+    <div class="contenitore">
+      <div class="pannello">
+        <h2>Solo occhi.</h2>
+        <p>Il progetto si chiuderà con una mostra. Per entrare si lascia il telefono all'ingresso: niente foto, niente video, niente condivisioni.</p>
+        <p>È un modo per proteggere chi è ritratto, e un invito per chi guarda: per un'ora, anche tu sei lì senza filtri.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grigia" id="domande">
+    <div class="contenitore stretto">
+      <h2>Domande</h2>
+      <details>
+        <summary>Devo spogliarmi del tutto?</summary>
+        <p>Sì, il nudo è il cuore del progetto. Puoi però coprire o mascherare il volto e i segni che ti rendono riconoscibile, come tatuaggi, cicatrici o nei, e puoi fermarti in qualsiasi momento.</p>
+      </details>
+      <details>
+        <summary>Serve un corpo "da foto"?</summary>
+        <p>No. Il progetto esiste proprio per raccontare i corpi come sono, di ogni età e forma.</p>
+      </details>
+      <details>
+        <summary>Devo saper posare?</summary>
+        <p>No. Non ci sono pose: fai quello che faresti in quell'ora, e intanto chiacchieriamo.</p>
+      </details>
+      <details>
+        <summary>Dove si scatta?</summary>
+        <p>Dove vuoi tu: casa tua o un posto che senti tuo.</p>
+      </details>
+      <details>
+        <summary>Cosa succede alle foto?</summary>
+        <p>Vedi tutto il rullino e scegli quali foto possono essere mostrate. Nessuna immagine viene usata senza il tuo consenso scritto, e nessuna foto in cui non ti senti a tuo agio verrà esposta. In mostra si entra senza telefono, quindi nessuno potrà fotografarle.</p>
+      </details>
+      <details>
+        <summary>Posso ripensarci?</summary>
+        <p>Sì. Puoi fermarti durante gli scatti o cambiare idea anche dopo.</p>
+      </details>
+      <details>
+        <summary>Vengo pagato per partecipare?</summary>
+        <p>No. <em>io, così.</em> è un progetto senza scopo di lucro: non pago chi partecipa e non guadagno nulla dalle foto. Lo faccio per passione e per il messaggio, e le spese di pellicola, sviluppo e stampa sono a carico mio.</p>
+      </details>
+      <details>
+        <summary>Costa qualcosa?</summary>
+        <p>No, la partecipazione è gratuita. Se ti va, possiamo accordarci per stampare qualche scatto da tenere.</p>
+      </details>
+      <details>
+        <summary>Chi può partecipare?</summary>
+        <p>Chiunque abbia almeno 18 anni.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="chisono">
+    <div class="contenitore stretto chisono">
+      <h2>Chi sono</h2>
+      <p>Da poco mi sono trasferito da queste parti. Lavoro da tanti anni nella comunicazione come art director. Non sono un fotografo di professione: scatto su pellicola per diletto, con una vecchia macchina a telemetro. Mi piace che una foto sia quello che è, senza possibilità di correggerla.</p>
+      <p>Da sempre penso che il corpo andrebbe guardato con più normalità, senza vergogna e senza giudizio. <em>io, così.</em> nasce da qui: dal desiderio di raccontare le persone come sono, e di farlo insieme a loro.</p>
+      <p>È un progetto senza scopo di lucro. Non guadagno nulla e non posso pagare chi partecipa: ci metto il mio tempo, e pellicola, sviluppo e stampe li pago io, perché credo nel messaggio.</p>
+      <p>Il mio nome te lo dico al primo caffè.</p>
+    </div>
+  </section>
+
+  <section id="scrivimi" class="grigia">
+    <div class="contenitore finale">
+      <h2>Se ti va, scrivimi.</h2>
+      <p>Anche solo per fare domande. Prima ci prendiamo un caffè e ne parliamo. Se poi non ti va, nessun problema.</p>
+      <a class="bottone" href="mailto:iocosi.progetto@gmail.com?subject=io%2C%20cos%C3%AC.">Scrivimi una mail</a>
+      <p class="nota">iocosi.progetto@gmail.com<br>Solo maggiorenni. Partecipazione gratuita, progetto senza scopo di lucro.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="contenitore">
+    <p><strong>io, così.</strong> Un progetto fotografico su pellicola, senza scopo di lucro.</p>
+    <p>Nessuna immagine viene pubblicata senza il consenso di chi è ritratto.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.apri-menu');
+    var menu = document.getElementById('menu');
+    if (btn && menu) {
+      btn.addEventListener('click', function () {
+        var aperto = menu.classList.toggle('aperto');
+        btn.setAttribute('aria-expanded', aperto ? 'true' : 'false');
+        btn.setAttribute('aria-label', aperto ? 'Chiudi il menù' : 'Apri il menù');
+      });
+      menu.addEventListener('click', function (e) {
+        if (e.target.tagName === 'A') {
+          menu.classList.remove('aperto');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.setAttribute('aria-label', 'Apri il menù');
+        }
+      });
+    }
+  })();
+</script>
+</body>
+</html>
