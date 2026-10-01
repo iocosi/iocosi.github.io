@@ -100,6 +100,8 @@
     padding: 1rem 2rem; border-radius: 999px; font-size: 1.1rem; font-weight: 500;
   }
   .bottone:hover { background: #000; }
+  .bottone.secondario { background: transparent; color: var(--nero); box-shadow: inset 0 0 0 1px var(--nero); }
+  .bottone.secondario:hover { background: var(--nero); color: var(--bianco); }
   .link { text-decoration: none; font-size: 1.1rem; font-weight: 500; }
   .link:hover { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -168,6 +170,17 @@
   @media (prefers-reduced-motion: reduce) { summary::after { transition: none; } }
   details p { color: var(--grigio); margin: 0 0 1.25rem; max-width: 40rem; }
 
+  /* Moduli */
+  .moduli { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+  .moduli li { display: flex; gap: 1rem 2rem; align-items: center; justify-content: space-between; padding: 1.5rem 0; border-top: 1px solid var(--linea); flex-wrap: wrap; }
+  .moduli li:last-child { border-bottom: 1px solid var(--linea); }
+  .moduli div { flex: 1 1 22rem; }
+  .moduli h3 { font-size: 1.15rem; font-weight: 600; margin: 0 0 0.35rem; letter-spacing: -0.01em; }
+  .moduli p { color: var(--grigio); margin: 0; font-size: 1rem; }
+  .scarica { flex: 0 0 auto; text-decoration: none; font-weight: 500; font-size: 0.95rem; border: 1px solid var(--nero); border-radius: 999px; padding: 0.55rem 1.2rem; }
+  .scarica:hover { background: var(--nero); color: var(--bianco); }
+  .avviso { font-size: 0.95rem; color: var(--nero); margin: 0; }
+
   /* Chi sono */
   .chisono p { color: var(--grigio); font-size: 1.15rem; margin: 0 0 1.25rem; }
   .chisono p:last-child { color: var(--nero); font-weight: 500; }
@@ -195,6 +208,7 @@
       <a href="#progetto">Il progetto</a>
       <a href="#mostra">La mostra</a>
       <a href="#domande">Domande</a>
+      <a href="#moduli">Moduli</a>
       <a href="#chisono">Chi sono</a>
       <a class="pillola" href="#scrivimi">Scrivimi</a>
     </nav>
@@ -235,12 +249,12 @@
         <li>
           <span class="numero">3</span>
           <h3>Il rullino</h3>
-          <p>Porto una vecchia macchina fotografica e un rullino dedicato a te: 36 pose. Non è detto che tutte riescano, è il bello della pellicola. Vedrai tutti i negativi e sceglierai tu quali foto possono essere mostrate.</p>
+          <p>Porto una vecchia macchina fotografica e un rullino dedicato a te: 36 pose. Non è detto che tutte riescano, è il bello della pellicola. Vedrai tutti i negativi e potrai escludere le foto che non vuoi siano mostrate.</p>
         </li>
         <li>
           <span class="numero">4</span>
           <h3>La mostra</h3>
-          <p>Il progetto si conclude con una mostra in cui si entra solo senza telefono, per sensibilizzare sul tema e spingere altre persone a unirsi.</p>
+          <p>L'obiettivo del progetto è una mostra in cui si entra solo senza telefono, per sensibilizzare sul tema e spingere altre persone a unirsi.</p>
         </li>
       </ol>
     </div>
@@ -269,8 +283,9 @@
     <div class="contenitore">
       <div class="pannello">
         <h2>Solo occhi.</h2>
-        <p>Il progetto si chiuderà con una mostra. Per entrare si lascia il telefono all'ingresso: niente foto, niente video, niente condivisioni.</p>
-        <p>È un modo per proteggere chi è ritratto, e un invito per chi guarda: per un'ora, anche tu sei lì senza filtri.</p>
+        <p>L'obiettivo del progetto è una mostra in cui si può solo guardare, nella riservatezza più totale: per chi ha posato e per chi osserva.</p>
+        <p>Alle pareti non ci saranno foto. Ogni rullino starà in un portafoto chiuso, senza nomi. Per vedere le immagini bisognerà aprirlo, da soli, con le cuffie e un po' di musica.</p>
+        <p>Il telefono si lascerà all'ingresso: niente foto, niente video, niente condivisioni. Chi è ritratto sarà protetto, e chi guarda resterà solo con quello che sceglie di vedere.</p>
       </div>
     </div>
   </section>
@@ -296,7 +311,7 @@
       </details>
       <details>
         <summary>Cosa succede alle foto?</summary>
-        <p>Vedi tutto il rullino e scegli quali foto possono essere mostrate. Nessuna immagine viene usata senza il tuo consenso scritto, e nessuna foto in cui non ti senti a tuo agio verrà esposta. In mostra si entra senza telefono, quindi nessuno potrà fotografarle.</p>
+        <p>Vedi tutto il rullino e indichi le foto che non vuoi siano mostrate: quelle restano private, sempre. Finché non firmi, nessuna foto viene usata, e le altre si usano solo nei modi che scegli tu nella liberatoria. Se si farà la mostra, si entrerà senza telefono, quindi nessuno potrà fotografarle.</p>
       </details>
       <details>
         <summary>Posso ripensarci?</summary>
@@ -317,7 +332,29 @@
     </div>
   </section>
 
-  <section id="chisono">
+  <section id="moduli">
+    <div class="contenitore stretto">
+      <h2>Moduli</h2>
+      <p class="intro">Leggili con calma, anche prima di scrivermi: dentro c'è tutto quello che prometto e tutto quello che puoi scegliere. Se vuoi, scarica la liberatoria, compilala a casa e portala stampata al nostro incontro: la firmiamo insieme, in due copie, e una resta a te.</p>
+      <ul class="moduli">
+        <li>
+          <div><h3>Liberatoria e informativa privacy</h3><p>Le tue scelte su volto, nome e usi delle foto, i miei impegni, la revoca e il trattamento dei dati. 3 pagine.</p></div>
+          <a class="scarica" href="moduli/iocosi_liberatoria.pdf" download>Scarica PDF</a>
+        </li>
+        <li>
+          <div><h3>Allegato A · Fotogrammi da escludere</h3><p>Si compila dopo aver visto tutti i negativi: indichi le foto che non vuoi siano mostrate.</p></div>
+          <a class="scarica" href="moduli/iocosi_allegato_A_fotogrammi_da_escludere.pdf" download>Scarica PDF</a>
+        </li>
+        <li>
+          <div><h3>Allegato B · Consenso per ogni sede di mostra</h3><p>Prima di ogni mostra ti dico dove e quando: puoi dire sì a una sede e no a un'altra.</p></div>
+          <a class="scarica" href="moduli/iocosi_allegato_B_consenso_mostre.pdf" download>Scarica PDF</a>
+        </li>
+      </ul>
+      <p class="avviso">Non inviarmi mai documenti d'identità o moduli firmati via mail o WhatsApp: li guardiamo e li firmiamo insieme, di persona.</p>
+    </div>
+  </section>
+
+  <section id="chisono" class="grigia">
     <div class="contenitore stretto chisono">
       <h2>Chi sono</h2>
       <p>Da poco mi sono trasferito da queste parti. Lavoro da tanti anni nella comunicazione come art director. Non sono un fotografo di professione: scatto su pellicola per diletto, con una vecchia macchina a telemetro. Mi piace che una foto sia quello che è, senza possibilità di correggerla.</p>
@@ -327,12 +364,15 @@
     </div>
   </section>
 
-  <section id="scrivimi" class="grigia">
+  <section id="scrivimi">
     <div class="contenitore finale">
       <h2>Se ti va, scrivimi.</h2>
       <p>Anche solo per fare domande. Prima ci prendiamo un caffè e ne parliamo. Se poi non ti va, nessun problema.</p>
-      <a class="bottone" href="mailto:iocosi.progetto@gmail.com?subject=io%2C%20cos%C3%AC.">Scrivimi una mail</a>
-      <p class="nota">iocosi.progetto@gmail.com<br>Solo maggiorenni. Partecipazione gratuita, progetto senza scopo di lucro.</p>
+      <div class="azioni">
+        <a class="bottone" href="mailto:iocosi.progetto@gmail.com?subject=io%2C%20cos%C3%AC.">Scrivimi una mail</a>
+        <a class="bottone secondario" href="https://wa.me/393932675465">Scrivimi su WhatsApp</a>
+      </div>
+      <p class="nota">iocosi.progetto@gmail.com<br>WhatsApp, solo messaggi, niente chiamate:<br><span style="white-space:nowrap">+39 393 267 5465</span><br>Solo maggiorenni. Partecipazione gratuita, progetto senza scopo di lucro.</p>
     </div>
   </section>
 </main>
