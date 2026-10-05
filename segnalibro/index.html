@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>io, così.</title>
+<meta name="robots" content="noindex">
+<script>
+  // conta la visita dal QR del segnalibro, poi porta alla home
+  window.goatcounter = { no_onload: true };
+  var vai = function () { location.replace('/'); };
+  setTimeout(vai, 1500); // se il contatore è bloccato, si va comunque alla home
+  function conta() {
+    try { window.goatcounter.count({ path: '/segnalibro', title: 'Segnalibro (QR)' }); } catch (e) {}
+    setTimeout(vai, 300);
+  }
+</script>
+<script data-goatcounter="https://iocosi.goatcounter.com/count" async src="//gc.zgo.at/count.js" onload="conta()" onerror="vai()"></script>
+<noscript><meta http-equiv="refresh" content="0; url=/"></noscript>
+</head>
+<body><a href="/">io, così.</a></body>
+</html>
