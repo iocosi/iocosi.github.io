@@ -11,7 +11,21 @@
   var vai = function () { location.replace('/'); };
   setTimeout(vai, 1500); // se il contatore è bloccato, si va comunque alla home
   function conta() {
-    try { window.goatcounter.count({ path: '/segnalibro', title: 'Segnalibro (QR)' }); } catch (e) {}
+    var frasi = {
+      '1': 'Cosa fai quando non devi essere niente',
+      '2': 'Cerco persone. Chiunque.',
+      '3': 'Ho un rullino da 36 pose',
+      '4': 'Io porto un rullino, tu metti la musica',
+      '5': 'Cerco qualcuno che non sappia posare',
+      '6': 'Che musica metteresti',
+      '7': 'Il tuo divano, la tua musica',
+      '8': 'Non serve un corpo da copertina',
+      'cerco': 'Cerco persone da fotografare'
+    };
+    var f = new URLSearchParams(location.search).get('f');
+    var p = f ? '/segnalibro/frase-' + f : '/segnalibro';
+    var t = f ? 'Segnalibro ' + f + ' · ' + (frasi[f] || '') : 'Segnalibro (QR)';
+    try { window.goatcounter.count({ path: p, title: t }); } catch (e) {}
     setTimeout(vai, 300);
   }
 </script>
